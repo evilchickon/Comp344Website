@@ -1,7 +1,16 @@
+<?php
+function checkuser(){
+    if(isset($_SESSION['email'])){
+        echo "<p>Welcome </p>" $_SESSION['username']
+    }
+    else {
+        echo " "
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
-
 
 <head>
     <title>Car Salesman</title>
@@ -39,6 +48,10 @@
 
         <div class="col-md-9">
 
+            <?php
+                checkuser();
+            ?>
+
             <div class="row carousel-holder">
 
                 <div class="col-md-12">
@@ -66,6 +79,7 @@
                             <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
                     </div>
+
                 </div>
             </div>
         </div>
