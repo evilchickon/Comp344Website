@@ -1,8 +1,8 @@
 <?php
+session_start();
 function checkuser(){
-    if(isset($_SESSION['email'])){
-        echo "<p>Welcome </p>";
-        echo $_SESSION['username'];
+    if(($_SESSION['email'])){
+        echo "<p>Welcome, ".$_SESSION['email']."! click<a href="logout.php>here</a> to logout</p>">";
     }
 }
 ?>

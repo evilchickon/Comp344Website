@@ -8,18 +8,23 @@ $pass=$_POST["pass"];
 $logincon=$conn;
 
 if($email&&$pass){
-    $login = oci_parse($logincon, "SELECT * FROM USERS WHERE EMAIL = '$email' AND PASSWORD = '$pass'");
+    $login = oci_parse($logincon, "SELECT * FROM USERS WHERE EMAIL = '$email'");
     oci_execute($login);
     $rows = oci_num_rows($login);
-    if($rows==1){
+    if($rows!=0){
+        while($row=oci_fetch_assoc($login)){
+            $dbemail = $row['EMAIL'];
+            $dbpass = $row['PASSWORD'];
+        }
 
-        $arr = oci_fetch_array($login);
-        $_SESSION['username'] = $arr['EMAIL'];
-        header('Location: registered.html');
-        exit;
-    }
-    else{
-        echo oci_num_rows($login);
+        if($email=$dbemail&&$pass=$dbpass){
+            $_SESSION['email']==$dbemail;
+            header('Location: index.php');
+            exit;
+        }
+        else{
+            echo "incorrect password";
+        }
     }
 }
 else{
