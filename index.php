@@ -1,10 +1,8 @@
 <?php
 function checkuser(){
     if(isset($_SESSION['email'])){
-        echo "<p>Welcome </p>" $_SESSION['username']
-    }
-    else {
-        echo " "
+        echo "<p>Welcome </p>";
+        echo $_SESSION['username'];
     }
 }
 ?>
